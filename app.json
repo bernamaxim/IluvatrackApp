@@ -39,6 +39,10 @@
      *      }
      */
     "js": [
+		{
+			"path": "phonegap.js",
+			"remote": true
+		},
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -74,6 +78,26 @@
         {
             "path": "resources/css/app.css",
             "update": "delta"
+        },
+        {
+            "path": "resources/css/Custom.css",
+            "update": "delta"
+        },
+        {
+            "path": "resources/css/Main.css",
+            "update": "delta"
+        },
+        {
+            "path": "resources/css/DropdownMenu.css",
+            "update": "delta"
+        },
+        {
+            "path": "resources/css/Grid.css",
+            "update": "delta"
+        },
+        {
+            "path": "resources/css/Ext.ux.grid.List.css",
+            "update": "delta"
         }
     ],
 
@@ -103,6 +127,7 @@
      * Extra resources to be copied along when build
      */
     "resources": [
+		"config.xml",
         "resources/images",
         "resources/icons",
         "resources/startup"

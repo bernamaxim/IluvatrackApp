@@ -1,24 +1,114 @@
 /*
-    This file is generated and updated by Sencha Cmd. You can edit this file as
-    needed for your application, but these edits will have to be merged by
-    Sencha Cmd when it performs code generation tasks such as generating new
-    models, controllers or views and when running "sencha app upgrade".
-
-    Ideally changes to this file would be limited and most work would be done
-    in other places (such as Controllers). If Sencha Cmd cannot merge your
-    changes and its generated code, it will produce a "merge conflict" that you
-    will need to resolve manually.
+    Iluvatrack monitor application for android
+    Created by : Ahmad Suhendri <ahmad@suhendri.com>
+    Date: 24/11/2013
 */
-
+Ext.Loader.setPath({
+    'Ext.plugin': 'app/plugins',
+    'Ext.ux.touch.grid' : 'app/plugins/Ext.ux.touch.grid'
+});
 Ext.application({
     name: 'IluvatrackApp',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.device.Connection',
+        'Ext.MessageBox',
+        'IluvatrackApp.util.Config'
+    ],
+
+    controllers: [
+        'Base',
+        'Login',
+        'Main',
+        'Playback',
+        'Report',
+        'Setting',
+        'Feedback'
+    ],
+
+    models: [
+        'User',
+        'Unit',
+        'Status',
+
+        'report.Alarm',
+        'report.Event',
+        'report.Fuel',
+        'report.Geofence',
+        'report.Idle',
+        'report.Journey',
+        'report.Maxspeed',
+        'report.Monthlyfuel',
+        'report.Monthlymaxspeed',
+        'report.Monthlyodo',
+        'report.Odo',
+        'report.Overspeed',
+
+        'Poi'
+    ],
+
+    stores: [
+        'User',
+        'Unit',
+        'Status',
+        'UnitLocal',
+
+        'report.Alarm',
+        'report.Event',
+        'report.Fuel',
+        'report.Geofence',
+        'report.Idle',
+        'report.Journey',
+        'report.MaxSpeed',
+        'report.MonthlyFuel',
+        'report.MonthlyMaxSpeed',
+        'report.MonthlyOdo',
+        'report.Odo',
+        'report.OverSpeed',
+
+        'Poi'
     ],
 
     views: [
-        'Main'
+        'base.NavToolbar',
+        'Login',
+
+        'Main',
+
+        'Menu',
+
+        'playback.Form',
+        'playback.Maps',
+
+        'report.Main',
+        'report.Odo',
+        'report.MonthlyOdo',
+        'report.MaxSpeed',
+        'report.MonthlyMaxSpeed',
+        'report.Fuel',
+        'report.MonthlyFuel',
+        'report.OverSpeed',
+        'report.Idle',
+        'report.Geofence',
+        'report.Event',
+        'report.Alarm',
+        'report.Journey',
+
+        'report.table.Alarm',
+        'report.table.Event',
+        'report.table.Fuel',
+        'report.table.Geofence',
+        'report.table.Idle',
+        'report.table.Journey',
+        'report.table.MaxSpeed',
+        'report.table.MonthlyFuel',
+        'report.table.MonthlyMaxSpeed',
+        'report.table.MonthlyOdo',
+        'report.table.Odo',
+        'report.table.OverSpeed',
+
+        'Setting',
+        'Feedback'
     ],
 
     icon: {
@@ -42,9 +132,6 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('IluvatrackApp.view.Main'));
     },
 
     onUpdated: function() {

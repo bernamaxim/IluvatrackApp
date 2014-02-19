@@ -8,3 +8,22 @@
 
 // Examples of using the icon mixin:
 // @include icon('user');
+
+@include icon-font('IcoMoon', inline-font-files('icomoon/icomoon.woff', woff,'icomoon/icomoon.ttf', truetype,'icomoon/icomoon.svg', svg));
+
+@include icon("ico-setting", "\e608", "IcoMoon");
+@include icon("ico-playback", "\e606", "IcoMoon");
+@include icon("ico-monitor", "\e60a", "IcoMoon");
+@include icon("ico-report", "\e602", "IcoMoon");
+@include icon("ico-user", "\e607", "IcoMoon");
+@include icon("ico-feedback", "\e604", "IcoMoon");
+@include icon("ico-menu", "\e60b", "IcoMoon");
+@include icon("ico-home", "\e60c", "IcoMoon");
+@include icon("ico-arrow-down", "\e60d", "IcoMoon");
+@include icon("ico-arrow-down2", "\e60e", "IcoMoon");
+@include icon("ico-download", "\e60f", "IcoMoon");
+@include icon("ico-play2", "\e610", "IcoMoon");
+@include icon("ico-pause", "\e611", "IcoMoon");
+@include icon("ico-stop", "\e612", "IcoMoon");
+@include icon("ico-backward", "\e613", "IcoMoon");
+@include icon("ico-forward", "\e614", "IcoMoon");

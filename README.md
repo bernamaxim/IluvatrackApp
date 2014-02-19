@@ -1,1 +1,1 @@
-"# Iluvatrack monitor for android" 
+"Iluvatrack monitor client for iOS and Android"

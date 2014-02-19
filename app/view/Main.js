@@ -1,50 +1,134 @@
+/**
+ * Created by Ahmad Suhendri on 11/27/13.
+ */
 Ext.define('IluvatrackApp.view.Main', {
-    extend: 'Ext.tab.Panel',
-    xtype: 'main',
-    requires: [
-        'Ext.TitleBar',
-        'Ext.Video'
+    extend: 'Ext.Container',
+    requires: ['Ext.plugin.DropdownMenu',
+        'Ext.Map',
+        'IluvatrackApp.util.Maps',
+        'Ext.field.Search',
+        'Ext.SegmentedButton'
     ],
+    xtype: 'main',
+    id: 'mainMonitorView',
     config: {
-        tabBarPosition: 'bottom',
+        plugins:[{
+            xclass:'Ext.plugin.DropdownMenu',
+            toolbarRetriever:function(){
+                return this.getMenuContainer().down('navtoolbar#monitorToolbar');
+            },
+            menu:{
+                xtype:'list',
+                itemId: 'unitList',
+                mode: 'MULTI',
+                multiSelect: true,
+                store: 'UnitStore',
+                emptyText: 'No Matching Unit',
+                itemTpl: new Ext.XTemplate(
+                    '{name}',
+                    '<div class="checkitem">&nbsp;</div>'
+                ),
+                items: [{
+                    docked: 'top',
+                    xtype: 'toolbar',
+                    width: 175,
+                    items: [
+                        {
+                            xtype: 'searchfield',
+                            cls: 'unit-search',
+                            itemId: 'unitSearch',
+                            width: 173,
+                            margin: '0.1em',
+                            placeHolder: 'Search',
+                            name: 'searchfield'
+                        }
+                    ]
+                },
+                {
+                    docked: 'bottom',
+                    xtype: 'toolbar',
+                    width: 175,
+                    items: [
+                        {
+                            xtype: 'spacer'
+                        },
+                        {
+                            xtype: 'segmentedbutton',
+                            allowDepress: true,
+                            itemId: 'selectallBtn',
+                            items: [
+                                {text: 'All'},
+                                {text: 'None'}
+                            ],
+                            listeners: {
+                                toggle: function(container, button, pressed){
+                                    var me = this;
+                                    var unitList = me.up('#unitList');
 
+                                    if (button.getText() == 'All' && pressed == true) {
+                                        unitList.selectAll(true);
+                                        me.fireEvent('selectAllUnits');
+                                    } else if (button.getText() == 'None' && pressed == true) {
+                                        unitList.deselectAll(true);
+                                        me.fireEvent('deselectAllUnits');
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            xtype: 'spacer'
+                        }
+                    ]
+                }
+                ]
+            },
+            menuButton:{
+                iconCls:'ico-arrow-down',
+                ui : "plain",
+                cls : "menu-btn-top"
+            },
+            menuWrapper: {
+                width: 190
+            }
+        }],
         items: [
             {
-                title: 'Welcome',
-                iconCls: 'home',
-
-                styleHtmlContent: true,
-                scrollable: true,
-
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
-
-                html: [
-                    "You've just generated a new Sencha Touch 2 project. What you're looking at right now is the ",
-                    "contents of <a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a> - edit that file ",
-                    "and refresh to change what's rendered here."
-                ].join("")
-            },
-            {
-                title: 'Get Started',
-                iconCls: 'action',
-
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
-                    },
-                    {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
-                    }
-                ]
+                xtype: 'mainmenu'
+            }, {
+                xtype: 'navtoolbar',
+                itemId: 'monitorToolbar',
+                title: 'Monitor'
+            }, {
+                xtype: 'map',
+                itemId: 'mapMonitor',
+                height: '100%',
+                markers: [],
+                mapOptions: {
+                    center: new google.maps.LatLng (-1.740607,117.169436),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    zoom: 4,
+                    maxZoom: 17
+                }
             }
         ]
+    },
+
+    initialize: function() {
+        var me = this;
+        me.callParent(arguments);
+
+        // wait 100 ms
+        Ext.Function.defer(this.initMap,100,this);
+    },
+    initMap: function() {
+        var me = this;
+        var mapPanel = me.down('#mapMonitor');
+        var mapMon = mapPanel.getMap();
+
+    //    IluvatrackApp.util.Maps.addTraffic(mapMon);
+
+        if (mapMon == null) {
+            Ext.Function.defer(this.initMap,250,this);
+        }
     }
 });

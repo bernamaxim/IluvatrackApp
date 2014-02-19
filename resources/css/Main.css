@@ -1,0 +1,87 @@
+.viewport-inner {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.mainmenu {
+    background: #1d1d1d url(../images/logo.png) no-repeat center 10px;
+    background-size: 221px 62px;
+}
+
+.mainmenu .divider {
+    font-size: 0.7em;
+    color: #a3a3a3;
+    padding: 0.2em 1em;
+    border-bottom: 1px solid #161616;
+    background: #1d1d1d;
+}
+
+.x-button-mainmenu, .x-button-login {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    background-image: none;
+    background-color: #262626;
+    border-top: 1px solid #313131;
+    border-bottom: 1px solid #161616;
+    border-width: 1px 0;
+    height: 3em;
+}
+
+.x-button-mainmenu, .x-button-mainmenu .x-button-label, .x-button-mainmenu .x-badge, .x-button-login, .x-button-login .x-button-label, .x-button-login .x-badge {
+    color: #FFF;
+    text-align: left;
+}
+
+.x-button-mainmenu.x-button-pressing, .x-button-login.x-button-pressing {
+    background-color: #000;
+    background-image: none;
+}
+
+.x-button-mainmenu.x-button-pressing, .x-button-mainmenu.x-button-pressing .x-button-label, .x-button-mainmenu.x-button-pressing .x-badge, .x-button-login.x-button-pressing, .x-button-login.x-button-pressing .x-button-label, .x-button-login.x-button-pressing .x-badge {
+    color: #888;
+}
+
+.x-button-login{
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    -ms-border-radius:0;
+    -o-border-radius:0;
+    border-radius:0;
+    background-image:none;
+    background-color:#1d1d1d;
+    border:none;
+    height:auto;
+    margin:1em 0
+}
+.x-button-login .x-button-label,.x-button-login .x-badge,.x-button-login .x-hasbadge .x-badge,.x-hasbadge .x-button-login .x-badge{
+    color:#74b653
+}
+.x-button-login .x-button-label small,.x-button-login .x-badge small,.x-button-login .x-hasbadge .x-badge small,.x-hasbadge .x-button-login .x-badge small{
+    display:block;
+    font-size:.7em
+}
+.x-button-login .x-button-icon{
+    color:#606060;
+    background:#3a3a3a;
+    width:3em;
+    height:3em
+}
+.x-button-login .x-button-icon,.x-button-login .x-button-icon:before{
+    width:48px;
+    height:48px;
+    line-height:48px
+}
+.x-button-login.x-button-pressing{
+    background-color:transparent;
+    background-image:none
+}
